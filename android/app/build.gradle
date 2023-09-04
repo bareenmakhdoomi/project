@@ -65,7 +65,15 @@ flutter {
 dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation platform('com.google.firebase:firebase-bom:31.0.2')
     implementation 'com.google.firebase:firebase-analytics'
+    implementation(platform("com.google.firebase:firebase-bom:32.2.3"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
 }
 apply plugin: 'com.google.gms.google-services'
+plugins {
+  id("com.android.application")
+
+  // Add the Google services Gradle plugin
+  id("com.google.gms.google-services")
+
+}
