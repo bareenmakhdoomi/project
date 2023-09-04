@@ -84,22 +84,24 @@ class _CreatePostState extends State<CreatePost> {
                     builder:
                         (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
                       if (snapshot.hasData) {
-                        UserModel user = UserModel.fromJson(
-                          snapshot.data!.data() as Map<String, dynamic>,
-                        );
-                        return ListTile(
-                          leading: CircleAvatar(
-                            radius: 25.0,
-                            backgroundImage: NetworkImage(user.photoUrl!),
-                          ),
-                          title: Text(
-                            user.username!,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          subtitle: Text(
-                            user.email!,
-                          ),
-                        );
+                        final Map<String, dynamic>? data =
+                            snapshot.data!.data() as Map<String, dynamic>?;
+                        if (data != null) {
+                          UserModel user = UserModel.fromJson(data);
+                          return ListTile(
+                            leading: CircleAvatar(
+                              radius: 25.0,
+                              backgroundImage: NetworkImage(user.photoUrl!),
+                            ),
+                            title: Text(
+                              user.username!,
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            subtitle: Text(
+                              user.email!,
+                            ),
+                          );
+                        }
                       }
                       return Container();
                     },
