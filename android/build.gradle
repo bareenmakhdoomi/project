@@ -1,9 +1,14 @@
+plugins {
+    id("com.google.gms.google-services") version "4.3.15" apply false
+
+}
 buildscript {
     ext.kotlin_version = '1.7.20'
     repositories {
         google()
         mavenCentral()
     }
+
 
     dependencies {
         classpath 'com.android.tools.build:gradle:7.1.2'
@@ -30,3 +35,4 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
