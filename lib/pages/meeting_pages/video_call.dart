@@ -34,21 +34,21 @@ class _VideoCallState extends State<VideoCall> {
   }
 
   Future<void> getToken() async {
-    // String link =
-    //     "https://agora-node-tokenserver-1.davidcaleb.repl.co/access_token?channelName=${widget.channelName}";
-    //
-    // Response _response = await get(Uri.parse(link));
-    // Map data = jsonDecode(_response.body);
-    // setState(() {
-    //   tempToken = data["token"];
-    // });
-    // _client = AgoraClient(
-    //     agoraConnectionData: AgoraConnectionData(
-    //       appId: "c25e3b5bab074d4da60302e5043c222d",
-    //       tempToken: "007eJxTYDiz9VTKq0e6D5ZvPWxcrVZh25mvtqkrszQ+Uz7i69l8jaMKDMlGpqnGSaZJiUkG5iYpJimJZgbGBkappgYmxslGRkYp/+bfSWkIZGTYxK7HwsgAgSA+G0NxYk5+fjYDAwAUkSGk",
-    //       channelName: "salook",
-    //     ),
-    //     enabledPermission: [Permission.camera, Permission.microphone]);
+     String link =
+        "https://agora-node-tokenserver-1.davidcaleb.repl.co/access_token?channelName=${widget.channelName}";
+    
+     Response _response = await get(Uri.parse(link));
+      Map data = jsonDecode(_response.body);
+      setState(() {
+     tempToken = data["token"];
+    });
+     _client = AgoraClient(
+         agoraConnectionData: AgoraConnectionData(
+           appId: "c25e3b5bab074d4da60302e5043c222d",
+           tempToken: "007eJxTYDiz9VTKq0e6D5ZvPWxcrVZh25mvtqkrszQ+Uz7i69l8jaMKDMlGpqnGSaZJiUkG5iYpJimJZgbGBkappgYmxslGRkYp/+bfSWkIZGTYxK7HwsgAgSA+G0NxYk5+fjYDAwAUkSGk",
+           channelName: "salook",
+         ),
+         enabledPermission: [Permission.camera, Permission.microphone]);
     Future.delayed(Duration(seconds: 1)).then(
       (value) => setState(() => _loading = false),
     );
